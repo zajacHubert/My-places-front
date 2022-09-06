@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './App.module.scss';
+import { Header } from './components/Header/Header';
 
 export const App = () => {
   return (
-    <div className="App">
-      <h1 className={styles.title}>Start</h1>
+    <div className={styles.container}>
+      <Header />
     </div>
   );
 }
