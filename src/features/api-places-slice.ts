@@ -11,7 +11,21 @@ export const apiSlice = createApi({
         return {
             fetchPlaces: builder.query<Places, number | void>({
                 query: () => '/places',
-            })
+            }),
+            addPlace: builder.mutation({
+                query: (place) => ({
+                    url: '/places',
+                    method: 'POST',
+                    body: place,
+                })
+            }),
+            deletePlace: builder.mutation({
+                query: ({ id }) => ({
+                    url: `/places/${id}`,
+                    method: 'DELETE',
+                    body: id,
+                })
+            }),
         }
     }
 })

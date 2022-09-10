@@ -14,9 +14,13 @@ const markerIcon = new L.Icon({
 
 export const Map = () => {
 
+    const { data, isLoading, isSuccess, isError } = useFetchPlacesQuery();
 
-    const { data } = useFetchPlacesQuery();
-
+    if (isLoading) {
+        return <p>Loading ...</p>
+    } else if (isError) {
+        return <p>Loading error</p>
+    }
 
     return (
         <div className={styles.map}>
@@ -26,7 +30,7 @@ export const Map = () => {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
 
-                {data && data.map(el => (
+                {isSuccess && data.map(el => (
                     <Marker position={[el.lat, el.lon]} icon={markerIcon} key={el.id}>
                         <Popup>
                             <h3>{el.name}</h3>

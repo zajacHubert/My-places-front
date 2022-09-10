@@ -11,7 +11,7 @@ export const AddForm = () => {
         status: 'TO_SEE',
         address: '',
     })
-    const updateForm = (key: string, value: string | number) => {
+    const updateForm = (key: string, value: string) => {
         setForm(form => ({
             ...form,
             [key]: value,
