@@ -1,10 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import { placesSlice } from "./places-slice";
-import { apiSlice } from "./places-slice";
+import { apiSlice } from "./api-places-slice";
 
 export const store = configureStore({
     reducer: {
-        // places: placesSlice.reducer,
         [apiSlice.reducerPath]: apiSlice.reducer,
     },
     middleware: (getDefaultMiddleware) => {
