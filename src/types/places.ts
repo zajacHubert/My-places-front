@@ -10,3 +10,5 @@ export interface Place {
 }
 
 export type Places = Place[];
+
+export type PlaceToAdd = Omit<Place, 'id'>;

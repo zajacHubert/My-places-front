@@ -4,11 +4,14 @@ import 'leaflet/dist/leaflet.css';
 import styles from './Map.module.scss';
 import L from 'leaflet';
 import { useFetchPlacesQuery } from '../../features/api-places-slice';
+import { colors } from '../../utils/colors';
+import { messages } from '../../utils/messages';
+import { MdDelete } from 'react-icons/md';
 
 const markerIcon = new L.Icon({
     iconUrl: require("../../assets/marker.png"),
     iconSize: [35, 41],
-})
+});
 
 
 
@@ -34,12 +37,13 @@ export const Map = () => {
                     <Marker position={[el.lat, el.lon]} icon={markerIcon} key={el.id}>
                         <Popup>
                             <h3>{el.name}</h3>
-                            <p>{el.status}</p>
+                            <p style={{ color: `${colors[el.status]}` }}>{`${messages[el.status]}`}</p>
                             <p>{el.description}</p>
+                            <MdDelete className={styles.icon} />
                         </Popup>
                     </Marker>
                 ))}
             </MapContainer>
-        </div>
+        </div >
     )
 }

@@ -30,6 +30,6 @@ export const apiSlice = createApi({
     }
 })
 
-export const { useFetchPlacesQuery } = apiSlice;
+export const { useFetchPlacesQuery, useAddPlaceMutation, useDeletePlaceMutation } = apiSlice;
 
 
