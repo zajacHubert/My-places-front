@@ -100,6 +100,7 @@ export const AddForm = () => {
                             type="text"
                             className={styles.form_input}
                             name="address"
+                            placeholder='e.g. Warszawa, Plac Defilad 1'
                             required
                             value={form.address}
                             onChange={e => updateForm(e.target.name, e.target.value)}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { AutocompleteInput } from '../AutocompleteInput/AutocompleteInput';
 
 import styles from './Header.module.scss';
 
@@ -10,7 +11,7 @@ export const Header = () => {
             <h1 className={styles.title}>My places</h1>
             <Link to={'/add'} className={styles.btn}>Add new place</Link>
             <form>
-                <input type="text" />
+                <AutocompleteInput />
                 <button className={styles.btn}>Search</button>
             </form>
         </header>
