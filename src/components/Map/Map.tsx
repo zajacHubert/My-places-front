@@ -1,23 +1,22 @@
-import React, { useEffect } from 'react';
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import React from 'react';
+import { MapContainer, Marker, Popup, TileLayer, } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import styles from './Map.module.scss';
-import L from 'leaflet';
+import L, { map } from 'leaflet';
 import { useFetchPlacesQuery } from '../../features/api-places-slice';
 import { colors } from '../../utils/colors';
 import { messages } from '../../utils/messages';
 import { MdDelete } from 'react-icons/md';
+
+
 
 const markerIcon = new L.Icon({
     iconUrl: require("../../assets/marker.png"),
     iconSize: [35, 41],
 });
 
-
-
 export const Map = () => {
-
-    const { data, isLoading, isSuccess, isError } = useFetchPlacesQuery();
+    const { data, isLoading, isSuccess, isError, isFetching } = useFetchPlacesQuery(undefined, { refetchOnMountOrArgChange: true });
 
     if (isLoading) {
         return <p>Loading ...</p>
@@ -27,12 +26,11 @@ export const Map = () => {
 
     return (
         <div className={styles.map}>
-            <MapContainer center={[52.237049, 21.017532]} zoom={12} className={styles.container}>
+            <MapContainer center={[52.2317, 21.0061]} zoom={5} className={styles.container}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-
                 {isSuccess && data.map(el => (
                     <Marker position={[el.lat, el.lon]} icon={markerIcon} key={el.id}>
                         <Popup>

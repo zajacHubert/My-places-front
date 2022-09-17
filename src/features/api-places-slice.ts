@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Places, Place } from "../types/places";
+import { Places, Place, PlaceToAdd } from "../types/places";
 
 
 export const apiSlice = createApi({
@@ -7,12 +7,13 @@ export const apiSlice = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:3001',
     }),
+    tagTypes: ['Place'],
     endpoints(builder) {
         return {
             fetchPlaces: builder.query<Places, number | void>({
                 query: () => '/places',
             }),
-            addPlace: builder.mutation({
+            addPlace: builder.mutation<{}, PlaceToAdd>({
                 query: (place) => ({
                     url: '/places',
                     method: 'POST',

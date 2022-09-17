@@ -1,7 +1,8 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAddPlaceMutation, useFetchPlacesQuery } from '../../features/api-places-slice';
 import { PlaceStatus } from '../../types/place-status.enum';
-import { addPlace } from '../../utils/axios-functions';
+// import { addPlace } from '../../utils/axios-functions';
 import { geocode } from '../../utils/geocoding';
 import { Modal } from '../Modal/Modal';
 import styles from './AddForm.module.scss';
@@ -10,12 +11,14 @@ export const AddForm = () => {
 
     const [loading, setLoading] = useState(false);
     const [show, setShow] = useState(false);
+    const [addPlace] = useAddPlaceMutation();
     const [form, setForm] = useState({
         name: '',
         description: '',
         status: PlaceStatus.TO_SEE,
         address: '',
     });
+
 
     const updateForm = (key: string, value: string) => {
         setForm(form => ({
@@ -31,6 +34,7 @@ export const AddForm = () => {
 
         try {
             const { lat, lon } = await geocode(form.address);
+
             const formToAdd = { ...form, lat, lon };
             await addPlace(formToAdd);
 
@@ -44,6 +48,7 @@ export const AddForm = () => {
             });
             setShow(true);
         }
+
     }
 
     return (

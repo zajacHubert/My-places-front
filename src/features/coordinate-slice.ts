@@ -10,4 +10,17 @@ const initialState: CoordinateState = {
     lon: 21.017532,
 }
 
-export const CoordinateSlice
+export const coordinateSlice = createSlice({
+    'name': 'coordinate',
+    initialState,
+    reducers: {
+        setCoordinate(state, action: PayloadAction<{ lat: number, lon: number }>) {
+            state = {
+                lat: action.payload.lat,
+                lon: action.payload.lon,
+            }
+        }
+    }
+})
+
+export const { setCoordinate } = coordinateSlice.actions;
