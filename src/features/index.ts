@@ -9,7 +9,8 @@ export const store = configureStore({
     },
     middleware: (getDefaultMiddleware) => {
         return getDefaultMiddleware().concat(apiSlice.middleware);
-    },
+    }
+
 })
 
 export type AppDispatch = typeof store.dispatch;

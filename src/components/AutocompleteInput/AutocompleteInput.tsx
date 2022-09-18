@@ -1,28 +1,26 @@
 import React, { useState, ChangeEvent } from 'react';
 import { useFetchPlacesQuery } from '../../features/api-places-slice';
+import { LatLngExp } from '../../types/places';
 
 import styles from './AutocompleteInput.module.scss';
-import { Center } from '../../types/places';
 
 interface Props {
-    setCenter: React.Dispatch<React.SetStateAction<Center | undefined>>;
+    setCenter: React.Dispatch<React.SetStateAction<LatLngExp | undefined>>;
 }
 
 export const AutocompleteInput = ({ setCenter }: Props) => {
     const { data } = useFetchPlacesQuery();
     const [value, setValue] = useState('');
     const [showSuggestions, setShowSuggestions] = useState(false);
-    const suggestions = data;
+    const suggestions = data?.filter(el => el.name.toLowerCase().includes(value.toLowerCase()));
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log('change')
         setValue(e.target.value);
     }
 
     const handleClick = (name: string, lat: number, lon: number) => {
-        console.log('CLICK');
         setValue(name);
-        setCenter({ lat, lon });
+        setCenter([[lat, lon]]);
     }
 
     return (

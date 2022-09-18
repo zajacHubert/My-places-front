@@ -12,6 +12,7 @@ export const apiSlice = createApi({
         return {
             fetchPlaces: builder.query<Places, number | void>({
                 query: () => '/places',
+                providesTags: ['Place'],
             }),
             addPlace: builder.mutation<{}, PlaceToAdd>({
                 query: (place) => ({
@@ -25,10 +26,12 @@ export const apiSlice = createApi({
                     url: `/places/${id}`,
                     method: 'DELETE',
                     body: id,
-                })
+                }),
+                invalidatesTags: ['Place'],
             }),
         }
     }
+
 })
 
 export const { useFetchPlacesQuery, useAddPlaceMutation, useDeletePlaceMutation } = apiSlice;
