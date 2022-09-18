@@ -1,10 +1,10 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAddPlaceMutation, useFetchPlacesQuery } from '../../features/api-places-slice';
+import { useAddPlaceMutation } from '../../features/api-places-slice';
 import { PlaceStatus } from '../../types/place-status.enum';
-// import { addPlace } from '../../utils/axios-functions';
 import { geocode } from '../../utils/geocoding';
 import { Modal } from '../Modal/Modal';
+import { Spinner } from '../Spinner/Spinner';
 import styles from './AddForm.module.scss';
 
 export const AddForm = () => {
@@ -18,6 +18,7 @@ export const AddForm = () => {
         status: PlaceStatus.TO_SEE,
         address: '',
     });
+    const [error, setError] = useState('');
 
 
     const updateForm = (key: string, value: string) => {
@@ -37,8 +38,14 @@ export const AddForm = () => {
 
             const formToAdd = { ...form, lat, lon };
             await addPlace(formToAdd);
+            setShow(true);
 
-        } finally {
+        } catch (error) {
+            if (error instanceof Error) {
+                setError('Invalid address data!');
+            }
+        }
+        finally {
             setLoading(false);
             setForm({
                 name: '',
@@ -46,9 +53,12 @@ export const AddForm = () => {
                 status: PlaceStatus.TO_SEE,
                 address: '',
             });
-            setShow(true);
         }
 
+    }
+
+    if (loading) {
+        return <Spinner />
     }
 
     return (
@@ -115,6 +125,7 @@ export const AddForm = () => {
                     <button className={styles.form__btn}>Add</button>
 
                 </form>
+                {error && <p className={styles.error}>{error}</p>}
             </div>
             {show && <Modal setShow={setShow} />}
         </>

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import styles from './Map.module.scss';
@@ -8,8 +8,8 @@ import { colors } from '../../utils/colors';
 import { messages } from '../../utils/messages';
 import { MdDelete } from 'react-icons/md';
 import { ChangeCenter } from '../ChangeCenter/ChangeCenter';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../features';
+
+import { Spinner } from '../Spinner/Spinner';
 
 
 const markerIcon = new L.Icon({
@@ -20,11 +20,9 @@ const markerIcon = new L.Icon({
 export const Map = () => {
     const { data, isLoading, isSuccess, isError } = useFetchPlacesQuery(undefined, { refetchOnMountOrArgChange: true });
     const [deletePlace] = useDeletePlaceMutation();
-    const mapRef = useRef();
-
 
     if (isLoading) {
-        return <p>Loading ...</p>
+        return <Spinner />
     } else if (isError) {
         return <p>Loading error</p>
     }

@@ -23,10 +23,7 @@ export const Header = () => {
             console.log(center);
             dispatch(setCoordinate(center));
             console.log('zmieniono w header', coordinate);
-
         }
-
-
     }
 
     return (
