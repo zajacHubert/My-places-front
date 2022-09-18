@@ -1,16 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
 interface CoordinateState {
-
     coordinates: [number, number][];
-
 }
 
 const initialState: CoordinateState = {
     coordinates: [[52.237049, 21.017532,]],
 }
-
-
 
 export const coordinateSlice = createSlice({
     'name': 'coordinate',

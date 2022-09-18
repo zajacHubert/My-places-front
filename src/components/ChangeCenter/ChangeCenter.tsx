@@ -1,4 +1,3 @@
-import L from "leaflet";
 import React, { useEffect } from "react";
 import { useMap } from "react-leaflet";
 import { useSelector } from "react-redux";
@@ -10,7 +9,7 @@ export const ChangeCenter = () => {
     const map = useMap();
 
     useEffect(() => {
-        map.setView(coordinate[0], 7)
+        map.setView(coordinate[0], 7);
     }, [map, coordinate])
 
     return null;

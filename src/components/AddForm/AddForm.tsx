@@ -20,7 +20,6 @@ export const AddForm = () => {
     });
     const [error, setError] = useState('');
 
-
     const updateForm = (key: string, value: string) => {
         setForm(form => ({
             ...form,
@@ -30,16 +29,13 @@ export const AddForm = () => {
 
     const sendForm = async (e: FormEvent) => {
         e.preventDefault();
-
         setLoading(true);
 
         try {
             const { lat, lon } = await geocode(form.address);
-
             const formToAdd = { ...form, lat, lon };
             await addPlace(formToAdd);
             setShow(true);
-
         } catch (error) {
             if (error instanceof Error) {
                 setError('Invalid address data!');
@@ -54,7 +50,6 @@ export const AddForm = () => {
                 address: '',
             });
         }
-
     }
 
     if (loading) {
@@ -67,11 +62,8 @@ export const AddForm = () => {
                 <header>
                     <Link to={'/'} style={{ textDecoration: 'none' }}><h1 className={styles.title} >My places</h1></Link>
                 </header>
-
                 <h2 className={styles.form__title}>Add new place</h2>
-
                 <form className={styles.form} onSubmit={sendForm}>
-
                     <label className={styles.form__label}>
                         Name:
                         <input
@@ -123,7 +115,6 @@ export const AddForm = () => {
                     </label>
 
                     <button className={styles.form__btn}>Add</button>
-
                 </form>
                 {error && <p className={styles.error}>{error}</p>}
             </div>

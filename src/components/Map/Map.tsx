@@ -8,7 +8,6 @@ import { colors } from '../../utils/colors';
 import { messages } from '../../utils/messages';
 import { MdDelete } from 'react-icons/md';
 import { ChangeCenter } from '../ChangeCenter/ChangeCenter';
-
 import { Spinner } from '../Spinner/Spinner';
 
 
@@ -24,8 +23,9 @@ export const Map = () => {
     if (isLoading) {
         return <Spinner />
     } else if (isError) {
-        return <p>Loading error</p>
+        return <p>An error occured</p>
     }
+
     const removePlace = async (id: string) => {
         try {
             await deletePlace({ id })

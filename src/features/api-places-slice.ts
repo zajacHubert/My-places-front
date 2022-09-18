@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Places, Place, PlaceToAdd } from "../types/places";
-
+import { Places, PlaceToAdd } from "../types/places";
 
 export const apiSlice = createApi({
     reducerPath: 'api',
@@ -31,7 +30,6 @@ export const apiSlice = createApi({
             }),
         }
     }
-
 })
 
 export const { useFetchPlacesQuery, useAddPlaceMutation, useDeletePlaceMutation } = apiSlice;

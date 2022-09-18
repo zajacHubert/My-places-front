@@ -5,10 +5,7 @@ import { RootState } from '../../features';
 import { setCoordinate } from '../../features/coordinate-slice';
 import { LatLngExp } from '../../types/places';
 import { AutocompleteInput } from '../AutocompleteInput/AutocompleteInput';
-
 import styles from './Header.module.scss';
-
-
 
 export const Header = () => {
 
@@ -18,11 +15,8 @@ export const Header = () => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-
         if (center?.length) {
-            console.log(center);
             dispatch(setCoordinate(center));
-            console.log('zmieniono w header', coordinate);
         }
     }
 
@@ -36,5 +30,4 @@ export const Header = () => {
             </form>
         </header>
     )
-
 }

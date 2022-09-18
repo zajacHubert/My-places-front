@@ -1,7 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
 import { useFetchPlacesQuery } from '../../features/api-places-slice';
 import { LatLngExp } from '../../types/places';
-
 import styles from './AutocompleteInput.module.scss';
 
 interface Props {
