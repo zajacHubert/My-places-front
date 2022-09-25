@@ -13,7 +13,7 @@ export const Modal = ({ setShow }: Props) => {
     return (
         <div className={styles.overlay} >
             <div className={styles.dialog}>
-                <h2 className={styles.dialog__title}>Your account has been successfulyy created! </h2>
+                <h2 className={styles.dialog__title}>Your place has been successfulyy added! </h2>
                 <button
                     className={styles.dialog__btn}
                     onClick={handleClick}
