@@ -9,9 +9,6 @@ import { messages } from '../../utils/messages';
 import { MdDelete } from 'react-icons/md';
 import { ChangeCenter } from '../ChangeCenter/ChangeCenter';
 import { Spinner } from '../Spinner/Spinner';
-document.querySelector('.leaflet-pane.leaflet-popup-pane')!.addEventListener('click', event => {
-    event.preventDefault();
-});
 
 
 const markerIcon = new L.Icon({

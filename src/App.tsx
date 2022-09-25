@@ -10,8 +10,8 @@ export const App = () => {
     <div className={styles.container}>
       <Routes>
         <Route path="/" element={<MainView />} />
-        <Route path="/#close" element={<MainView />} />
         <Route path="/add" element={<AddFormView />} />
+        <Route path="*" element={<MainView />} />
       </Routes>
     </div>
   );
