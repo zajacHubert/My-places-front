@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/My-places-front/static/css/main.69c0497b.css",
-    "main.js": "/My-places-front/static/js/main.afe47e57.js",
+    "main.js": "/My-places-front/static/js/main.eb2d08de.js",
     "static/media/marker.png": "/My-places-front/static/media/marker.60be1644ea74709b0558.png",
     "index.html": "/My-places-front/index.html",
     "main.69c0497b.css.map": "/My-places-front/static/css/main.69c0497b.css.map",
-    "main.afe47e57.js.map": "/My-places-front/static/js/main.afe47e57.js.map"
+    "main.eb2d08de.js.map": "/My-places-front/static/js/main.eb2d08de.js.map"
   },
   "entrypoints": [
     "static/css/main.69c0497b.css",
-    "static/js/main.afe47e57.js"
+    "static/js/main.eb2d08de.js"
   ]
 }
