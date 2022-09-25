@@ -11,7 +11,6 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<MainView />} />
         <Route path="/add" element={<AddFormView />} />
-        <Route path="*" element={<MainView />} />
       </Routes>
     </div>
   );
