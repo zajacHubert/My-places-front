@@ -17,12 +17,13 @@ const markerIcon = new L.Icon({
 });
 
 export const Map = () => {
-    const { data, isLoading, isSuccess, isError } = useFetchPlacesQuery(undefined, { refetchOnMountOrArgChange: true });
+    const { data, isLoading, isSuccess, isError, error } = useFetchPlacesQuery(undefined, { refetchOnMountOrArgChange: true });
     const [deletePlace] = useDeletePlaceMutation();
 
     if (isLoading) {
         return <Spinner />
     } else if (isError) {
+        console.log(error)
         return <p>An error occured</p>
     }
 
